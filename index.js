@@ -49,12 +49,17 @@ function displayBooks() {
 
     const cardReadCheck = document.createElement("p");
     book.read === true ? cardReadCheck.textContent = "Read" : cardReadCheck.textContent = "Unread";
+    cardReadCheck.classList.add("read-check");
     div.appendChild(cardReadCheck);
+
+
+    const bookButtonContainer = document.createElement("div");
+    bookButtonContainer.classList.add("book--button-container");
 
     const deleteBook = document.createElement("button");
     deleteBook.textContent = "Delete book";
     deleteBook.classList.add("delete-book-btn");
-    div.appendChild(deleteBook);
+    
 
     //add delete book button and functionality
     deleteBook.addEventListener("click", ()=>{
@@ -66,23 +71,24 @@ function displayBooks() {
     const readBook = document.createElement("button");
     if(book.read){
       readBook.textContent = 'Mark as unread';
-      readBook.classList.add('read');
+      cardReadCheck.classList.add('read');
     }
     else{
       readBook.textContent = 'Mark as read';
       readBook.classList.remove('read');
     }
     readBook.classList.add("read-book-btn");
-    div.appendChild(readBook);
+    bookButtonContainer.appendChild(readBook);
+    bookButtonContainer.appendChild(deleteBook);
 
     readBook.addEventListener("click", ()=>{
-      book.read = !book.read;
-      readBook.classList.toggle('read');
+      book.toggleRead();
+      cardReadCheck.classList.toggle('read');
 
       readBook.textContent = book.read ? 'Mark as unread' : 'Mark as read';
-
+      cardReadCheck.textContent = book.read ? 'Read' : 'Unread';
     });
-
+    div.appendChild(bookButtonContainer);
     bookGrid.appendChild(div);
 
   });
@@ -95,7 +101,7 @@ addBookBtn.addEventListener("click", () => {
 
 dialogSubmitBtn.addEventListener("click", (e)=>{
   e.preventDefault();
-  if(dialogAuthor !== '' && dialogTitle.value !== ''
+  if(dialogAuthor.value !== '' && dialogTitle.value !== ''
       && dialogPages.value !== ''){
     //create book object with specified inputs
     const book = new Book(dialogAuthor.value, dialogTitle.value,

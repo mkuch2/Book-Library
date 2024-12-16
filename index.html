@@ -8,26 +8,30 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>My Book Library</h1>
+  <h1 id="page-header">My Book Library</h1>
   <div class="container">
 
  
   </div>
   
   <dialog>
-    <form>
+    <form id="dialog--form">
       <label for="dialog-title">Book Title: </label>
-      <input type="title," name="title" id="dialog-title" required>
+      <input type="text" name="title" id="dialog-title" required>
       <label for="dialog-author">Author: </label>
       <input type="text" name="author" id="dialog-author" required>
       <label for="dialog-pages">Pages: </label>
       <input type="text" name="pages" id="dialog-pages" required>
-      <label for="dialog-read">Book finished?: </label>
-      <input type= "checkbox" id="dialog-read" name="dialog-read" required>
-
-
-      <button formmethod="dialog" formnovalidate>Cancel</button>
-      <button id="dialog--submit-btn">Submit</button>
+      <div class="dialog--page-check">
+        <label for="dialog-read">Book finished?: </label>
+        <input type= "checkbox" id="dialog-read" name="dialog-read" required>
+      </div>
+      
+      <div class="dialog--buttons">
+        <button id="dialog--submit-btn">Submit</button>
+        <button formmethod="dialog" formnovalidate>Cancel</button>
+      </div>
+      
       
     </form>
   </dialog>
