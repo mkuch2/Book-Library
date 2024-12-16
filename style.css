@@ -78,6 +78,9 @@ button:hover{
   gap: 5px;
 }
 
+.read-check{
+  color: hsl(214, 32%, 36%);
+}
 .read-check.read{
   font-weight: bold;
   color: hsl(214, 32%, 36%);
