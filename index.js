@@ -15,6 +15,12 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+Book.prototype.toggleRead = function(){
+  this.read = !this.read;
+}
+
+
+
 function addBookToLibrary(book) {
   myLibrary.push(book);
 }
@@ -24,7 +30,7 @@ function displayBooks() {
     bookGrid.removeChild(bookGrid.lastChild);
   }
 
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, position) => {
     //create book div
     const div = document.createElement("div");
     div.classList.add("book");
@@ -45,7 +51,40 @@ function displayBooks() {
     book.read === true ? cardReadCheck.textContent = "Read" : cardReadCheck.textContent = "Unread";
     div.appendChild(cardReadCheck);
 
+    const deleteBook = document.createElement("button");
+    deleteBook.textContent = "Delete book";
+    deleteBook.classList.add("delete-book-btn");
+    div.appendChild(deleteBook);
+
+    //add delete book button and functionality
+    deleteBook.addEventListener("click", ()=>{
+      myLibrary.splice(position, 1);
+
+      displayBooks();
+    });
+
+    const readBook = document.createElement("button");
+    if(book.read){
+      readBook.textContent = 'Mark as unread';
+      readBook.classList.add('read');
+    }
+    else{
+      readBook.textContent = 'Mark as read';
+      readBook.classList.remove('read');
+    }
+    readBook.classList.add("read-book-btn");
+    div.appendChild(readBook);
+
+    readBook.addEventListener("click", ()=>{
+      book.read = !book.read;
+      readBook.classList.toggle('read');
+
+      readBook.textContent = book.read ? 'Mark as unread' : 'Mark as read';
+
+    });
+
     bookGrid.appendChild(div);
+
   });
 }
 
@@ -75,3 +114,4 @@ dialogSubmitBtn.addEventListener("click", (e)=>{
     dialog.close()
   }
 });
+
