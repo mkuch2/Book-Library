@@ -10,31 +10,28 @@
 <body>
   <h1>My Book Library</h1>
   <div class="container">
-    <div class="book">
-      <h2>Book 1</h2>
-      <p>Author: John Doe</p>
-      <p>Pages: 300</p>
-      <button class="toggle-read">Read</button>
-    </div>
-    <div class="book">
-      <h2>Book 1</h2>
-      <p>Author: John Doe</p>
-      <p>Pages: 300</p>
-      <button class="toggle-read">Read</button>
-    </div>
-    <div class="book">
-      <h2>Book 1</h2>
-      <p>Author: John Doe</p>
-      <p>Pages: 300</p>
-      <button class="toggle-read">Read</button>
-    </div>
-    <div class="book">
-      <h2>Book 1</h2>
-      <p>Author: John Doe</p>
-      <p>Pages: 300</p>
-      <button class="toggle-read">Read</button>
-    </div>
+
+ 
   </div>
   
+  <dialog>
+    <form>
+      <label for="dialog-title">Book Title: </label>
+      <input type="title," name="title" id="dialog-title" required>
+      <label for="dialog-author">Author: </label>
+      <input type="text" name="author" id="dialog-author" required>
+      <label for="dialog-pages">Pages: </label>
+      <input type="text" name="pages" id="dialog-pages" required>
+      <label for="dialog-read">Book finished?: </label>
+      <input type= "checkbox" id="dialog-read" name="dialog-read" required>
+
+
+      <button formmethod="dialog" formnovalidate>Cancel</button>
+      <button id="dialog--submit-btn">Submit</button>
+      
+    </form>
+  </dialog>
+  <button id="add-book">Add Book</button>
+
 </body>
 </html>
