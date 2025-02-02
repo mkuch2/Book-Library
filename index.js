@@ -21,7 +21,7 @@ function loadFromLocalStorage() {
   }
 }
 
-const myLibrary = [];
+let myLibrary = [];
 loadFromLocalStorage();
 
 function Book(title, author, pages, read) {
